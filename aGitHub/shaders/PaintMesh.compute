@@ -1,0 +1,59 @@
+﻿#pragma kernel CSMain
+#pragma kernel PaintStiker
+#include "bibliotequeShader.hlsl"
+
+RWTexture2D<float4> ResTex;
+Texture2D<float4>   MainTex;
+Texture2D<float4>   Stiker;
+Texture2D<float4>   MaskPaint;
+Texture2D<float4>   MaskNormal;
+
+float4 posDraw, posDraw_2, colorFarb, refVecX, refVecY, normal;
+float4x4 matritia;
+float epasseur, scale, scaleStiker;
+int sizeSkiker;
+
+[numthreads(32, 32, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+    {
+    // TODO: insert actual code here!
+    float4 maskS   = MaskPaint[id.xy];
+    float4 albedoS = MainTex[id.xy];
+
+    float dist = distance(posDraw.rgb, maskS.rgb);
+
+    float x = step(0.05f * epasseur / scale, dist);
+
+    albedoS = lerp(colorFarb, albedoS, x); // +fixed4(0.01f, 0.01f, 0.01f, 0.01f);
+    albedoS.a = lerp(colorFarb.a, albedoS.a, x);
+
+    ResTex[id.xy] = albedoS;
+    }
+
+[numthreads(32, 32, 1)]
+void PaintStiker(uint3 id : SV_DispatchThreadID)
+    {
+    float3 restPos3D = posDraw; // +refVecX * id.x + refVecY * id.y;   
+    float4 maskS = MaskPaint[id.xy];
+    float4 albedoS = MainTex[id.xy];
+    float3 normTex = (MaskNormal[id.xy].rbg - float3(0.5f, 0.5f, 0.5f) ) * 2.0f;
+    normTex = mul(normTex, matritia);
+
+    float4 uvStiker = mul(maskS, matritia);
+    
+    int2 posStiker = RepereVector(uvStiker.xy * 512, float2(512, 512));
+    
+    float dist = distLine(restPos3D, restPos3D + normal.rgb, maskS.rgb);
+    float4 colorDr = Stiker[posStiker];
+    //float dist = distance(posDraw.rgb, maskS.rgb);
+    float f = dot(normTex, normal);
+    float estFace = f > 0.0f? 0.0f: 1.0f;
+
+    float x = step( dist, -1.0f);
+
+    albedoS = lerp(albedoS, colorDr, step(dist, epasseur * 0.04f) * estFace ); // +fixed4(0.01f, 0.01f, 0.01f, 0.01f);
+    albedoS.a = 1.0f;
+
+    ResTex[id.xy] = albedoS;
+    }
+
