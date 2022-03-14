@@ -216,15 +216,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64418396}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f4ee4e7736f0a4897446b0603692e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f8c2f24327dcec4b9bf62f744179eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shader: {fileID: 7200000, guid: 4004a351572608f44b2e8e010ccffe8d, type: 3}
-  radius: 3.3
+  shader: {fileID: 7200000, guid: a68f39bff70afc843938f21e99332b1e, type: 3}
+  radius: 0
   color: {r: 1, g: 0, b: 0, a: 1}
-  stikerTex: {fileID: 2800000, guid: 671398bbfc2be444994dc3d6096335c9, type: 3}
+  stikerTex: {fileID: 0}
 --- !u!114 &64418401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,14 +234,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 64418396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ebd30417e35154d93e7c1add148aec, type: 3}
+  m_Script: {fileID: 11500000, guid: ba9b6991197c9ef4382ec8639832caf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HorizontalVerticalSensitivity: 0.1
   UpDownSensitivity: 0.015
   InvertedY: 0
   SpeedMultiplyerOnShiftPressed: 30
-  vitesse: 0.1
+  vitesse: 1
 --- !u!114 &64418402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,18 +249,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64418396}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e136b52de9b2d724589ca9b49e17147f, type: 3}
+  m_Script: {fileID: 11500000, guid: f79f611175b36144593f2705a7e3fd1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.36286598, g: 1, b: 0.15471691, a: 1}
-  radius: 3.4
-  koeffSpot: 0.231
-  mat: {fileID: 2100000, guid: 32940b04f2f938245a98a79fd562a700, type: 2}
+  color: {r: 0, g: 1, b: 0.06965423, a: 1}
+  radius: 3.2
+  koeffSpot: 0.67
+  mat: {fileID: 2100000, guid: 1c82bfbce7297d94c82f8578a45460a8, type: 2}
   estDraw: 0
   estDrawPermanent: 0
-  Enable: 0
+  Enable: 1
 --- !u!1 &90358559
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +480,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -5885091460419426104, guid: f72bd0c9476473d42af8dda4c70ba92b, type: 3}
+  m_Mesh: {fileID: -5885091460419426104, guid: f858b7a46e8d91841a4b93d23482109d, type: 3}
 --- !u!114 &1652823844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,17 +490,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1652823842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7be088c6fad1e764e9c98df9a45cd92e, type: 3}
+  m_Script: {fileID: 11500000, guid: 493252526286c274d98fd0de2f279c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: pyramide2
+  idName: 1
   estSetTextureMask: 1
   estCreatNouveauTexture: 1
   maskDraw: {fileID: 0}
   maskNorm: {fileID: 0}
   bias: {x: 0, y: 0, z: 0}
   scale: 0
-  sizeTex: 1024
+  sizeTex: 2048
   mr: {fileID: 0}
   rt: {fileID: 0}
   rt_2: {fileID: 0}
@@ -524,7 +524,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b4eb49937edf8d4398f2bd481796385, type: 2}
+  - {fileID: 2100000, guid: a2e8a150f955d4a45b680ed72daae703, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -553,7 +553,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652823842}
-  m_Mesh: {fileID: -5885091460419426104, guid: f72bd0c9476473d42af8dda4c70ba92b, type: 3}
+  m_Mesh: {fileID: -5885091460419426104, guid: f858b7a46e8d91841a4b93d23482109d, type: 3}
 --- !u!4 &1652823847
 Transform:
   m_ObjectHideFlags: 0
